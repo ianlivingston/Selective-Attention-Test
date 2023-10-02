@@ -1,0 +1,21 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.colorQuestion {
+  margin-bottom: 50px;
+  font-size: xx-large;
+}
+
+.start {
+  font-size: xx-large;
+  margin-bottom: 50px;
+}
+
+#scoreResult {
+  font-size: xx-large;
+}

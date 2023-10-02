@@ -17,11 +17,22 @@ const App = () => {
   console.log(score, total);
 
   if(began === false) {
-    content = <Button name="Start" typeOfButton="start" clickHandler={handleStartClick} />;
+    content = 
+      <div>
+        <Button name="Start" typeOfButton="start" clickHandler={handleStartClick} />
+        <p>
+          Instructions: After clicking start, you will see a prompt with the name of a color
+          and two buttons of different colors. One of the colors of the two buttons will be the
+          name of the color and the other will be the color of the text. If the prompt is not
+          underlined, choose the color of the text. If it is underlined, choose the color of the
+          word. You have 60 seconds to answer as many of these prompts as you can. Your score
+          will be the number of prompts you answered correctly.        
+        </p>
+      </div>;
   } 
   
   else if(finished === true) {
-    content = <>Your score is {score}</>;
+    content = <div id="scoreResult">Your score is {score}</div>;
   }
 
   else {
@@ -38,9 +49,9 @@ const App = () => {
   );
 }
 
-const Button = ({name, typeOfButton, clickHandler}) =>  {
+const Button = ({name, buttonStyle, typeOfButton, clickHandler}) =>  {
   return (
-    <button className={typeOfButton} onClick={clickHandler}>
+    <button className={typeOfButton} style={buttonStyle} onClick={clickHandler}>
       {name}
     </button>
   );
@@ -101,9 +112,16 @@ const ColorTest = ({updateTotal, updateScore}) => {
 }
 
 const ColorChoice = ({color, handleClick}) => {
+  
+  const buttonStyle = {
+    backgroundColor: color, 
+    height: "400px", 
+    width: "400px"
+  }
+  
   return (
     <>
-      <Button name={color} typeOfButton="choice" clickHandler={handleClick}/>
+      <Button name="" buttonStyle={buttonStyle} typeOfButton="choice" clickHandler={handleClick}/>
     </>
   )
 }
@@ -111,14 +129,14 @@ const ColorChoice = ({color, handleClick}) => {
 const ColorQuestion = ({colorWord, colorInk, isUnderlined}) => {
   if(isUnderlined){
     return (
-      <div style={{color: colorInk, textDecorationLine: "underline"}}>
+      <div style={{color: colorInk, textDecorationLine: "underline"}} className="colorQuestion">
         {colorWord}
       </div>
     )
   }
   
   return (
-    <div style={{color: colorInk}}>
+    <div style={{color: colorInk}} className="colorQuestion">
       {colorWord}
     </div>
   )
