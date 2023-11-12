@@ -29,8 +29,6 @@ const ColorTest = ({updateTotal, updateScore}) => {
       if(colorInk === answer) updateScore();
     }
   
-    console.log("Answer: ", answer)
-  
     if (left_side){
       return (
        <div>
